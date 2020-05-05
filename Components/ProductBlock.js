@@ -12,7 +12,7 @@ function ProductBlock(props) {
       <div className="card">
           <p>Block Title: {product.blockTitle}</p>
           <p>Style: {product.style}</p>
-        <ProductComponent product={product.productComponent}/>
+        <ProductComponent product={product.productComponent} />
       </div>
     );
   }

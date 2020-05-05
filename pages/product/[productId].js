@@ -18,7 +18,7 @@ function Product(props) {
         <React.Fragment>
           <div className="container grid-lg mt-2">
             <div className="columns">
-                <ProductPage product={props.product} key={props.product.fields.pageTitle} />
+                <ProductPage product={props.product} key={props.product.sys.id} />
             </div>
           </div>
         </React.Fragment>
@@ -35,7 +35,7 @@ export async function getServerSideProps({ query }) {
     const entries = await contentfulClient.getEntries({
       'fields.slug': productId,
       'content_type': 'productPage',
-      include: 3
+      include: 4
     })
     entries.items.forEach(function (entry) {
           if (entry) {

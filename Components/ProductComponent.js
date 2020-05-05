@@ -5,7 +5,7 @@ function ProductComponent(props) {
   // Access post fields map
   // console.log(props)
   const product = props.product.fields;
-  console.log(product)
+  // console.log(product)
 
   return (
     <div className="column">
