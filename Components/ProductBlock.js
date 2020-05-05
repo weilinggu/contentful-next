@@ -9,8 +9,9 @@ function ProductBlock(props) {
     // console.log(product)
   
     return (
-      <div>
+      <div className="card">
           <p>Block Title: {product.blockTitle}</p>
+          <p>Style: {product.style}</p>
         <ProductComponent product={product.productComponent}/>
       </div>
     );
