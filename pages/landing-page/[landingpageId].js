@@ -1,9 +1,6 @@
 import Head from "next/head";
 import { contentfulClient } from '../../lib/contentful-client'
 import React from 'react'
-// import ProductComponent from '../../Components/ProductComponent'
-// import ProductBlock from '../../Components/ProductBlock'
-// import ProductPage from '../../Components/ProductPage'
 import LandingPage from '../../Components/LandingPage'
 
 function LandingPagePage(props) {

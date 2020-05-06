@@ -1,6 +1,6 @@
 
 // import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import ProductComponent from './ProductComponent'
+import ProductData from './ProductData'
 
 function ProductBlock(props) {
     // Access post fields map
@@ -12,7 +12,7 @@ function ProductBlock(props) {
       <div className="card">
           <p>Block Title: {product.blockTitle}</p>
           <p>Style: {product.style}</p>
-        <ProductComponent product={product.productComponent} />
+        <ProductData product={product.productComponent} />
       </div>
     );
   }
