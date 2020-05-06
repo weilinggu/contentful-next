@@ -1,7 +1,7 @@
 
 // import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
-function ProductComponent(props) {
+function ProductData(props) {
   // Access post fields map
   // console.log(props)
   const product = props.product.fields;
@@ -25,4 +25,4 @@ function ProductComponent(props) {
   );
 }
 
-export default ProductComponent;
+export default ProductData;

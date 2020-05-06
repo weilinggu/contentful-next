@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { contentfulClient } from '../lib/contentful-client'
 import React from 'react'
-import ProductComponent from '../Components/ProductComponent'
+import ProductData from '../Components/ProductData'
 
 export default function Home(props) {
   return (
@@ -15,10 +15,10 @@ export default function Home(props) {
         <React.Fragment>
           <div className="container grid-lg mt-2">
             <div className="columns">
-              {props.allProducts &&
+              {/* {props.allProducts &&
                 props.allProducts.map(product => (
-                  <ProductComponent product={product} key={product.fields.sku} />
-                ))}
+                  <ProductData product={product} key={product.fields.sku} />
+                ))} */}
             </div>
           </div>
         </React.Fragment>
@@ -173,15 +173,15 @@ export default function Home(props) {
   );
 }
 
-Home.getInitialProps = async () => {
+// Home.getInitialProps = async () => {
   // Get every entries in contentful from type Article, sorted by date.
   // article is the ID of the content model we created on the dashboard.
-  const entries = await contentfulClient.getEntries({
-    content_type: "product",
-    order: "-fields.quantity"
-  });
+  // const entries = await contentfulClient.getEntries({
+  //   content_type: "product",
+  //   order: "-fields.quantity"
+  // });
 
   // Inject in props of our screen component
-  return { allProducts: entries.items };
+  // return { allProducts: entries.items };
   // return {}
-};
+// };
