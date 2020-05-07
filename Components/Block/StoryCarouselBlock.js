@@ -6,7 +6,7 @@ function StoryCarouselBlock(props) {
     // Access post fields map
     // console.log(props)
     const block = props.block.fields;
-    console.log(block)
+    // console.log(block)
   
     return (
       <div className="card">

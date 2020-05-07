@@ -2,14 +2,14 @@ import ProductBlock from '../Block/ProductBlock'
 import InstructionBlock from '../Block/InstructionBlock'
 
 function ProductPage(props) {
-    console.log(props.product.fields.instructionBlock)
     const product = props.product.fields;
+    console.log(props)
   
     return (
       <div className="column">
-        <p>Page Title: {product.pageTitle}</p>
+        <h1>{product.pageTitle}</h1>
         <ProductBlock product={product.productBlock}/>
-        {product.instructionBlock && <InstructionBlock block={product.instructionBlock}/>}
+        {product.instructionBlock && props.productOnly === 'undefined' && <InstructionBlock block={product.instructionBlock}/>}
       </div>
     );
   }

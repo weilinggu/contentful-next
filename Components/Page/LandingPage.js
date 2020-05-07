@@ -5,7 +5,6 @@ import StoryCarouselBlock from '../Block/StoryCarouselBlock'
 function LandingPage(props) {
     // console.log(props.page.fields)
     const page = props.page.fields;
-    console.log(page.blocks[0].sys.contentType.sys.id)
     let block_component = []
     page.blocks.forEach(block => {
       if (block.sys.contentType.sys.id == 'productBlock') {
@@ -22,19 +21,8 @@ function LandingPage(props) {
   
     return (
       <div className="column">
-        <p>Page Title: {page.title}</p>
+        <h1>{page.title}</h1>
         <p>Page Description: {page.description}</p>
-        {/* {page.blocks &&
-                page.blocks.map(block => (
-                  (block.sys.contentType.sys.id == 'productBlock' ? 
-                    <ProductBlock product={block} key={block.fields.blockTitle} />
-                    :
-                    <InstructionBlock product={block} key={block.fields.blockTitle} />
-                )
-                  // (block.sys.contentType.sys.id == 'instructionBlock' && (
-                  //   <InstructionBlock product={block} key={block.fields.blockTitle} />
-                  // ))
-                ))} */}
           {block_component}
       </div>
     );

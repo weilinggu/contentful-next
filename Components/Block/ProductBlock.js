@@ -10,7 +10,7 @@ function ProductBlock(props) {
   
     return (
       <div className="card">
-          <p>Block Title: {product.blockTitle}</p>
+          {/* <p>Block Title: {product.blockTitle}</p> */}
           <p>Style: {product.style}</p>
         <ProductData product={product.productComponent} />
       </div>
