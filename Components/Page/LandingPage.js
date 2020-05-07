@@ -1,5 +1,6 @@
-import ProductBlock from './ProductBlock'
-import InstructionBlock from './InstructionBlock'
+import ProductBlock from '../Block/ProductBlock'
+import InstructionBlock from '../Block/InstructionBlock'
+import StoryCarouselBlock from '../Block/StoryCarouselBlock'
 
 function LandingPage(props) {
     // console.log(props.page.fields)
@@ -12,6 +13,9 @@ function LandingPage(props) {
       }
       if (block.sys.contentType.sys.id == 'instructionBlock') {
         block_component.push(<InstructionBlock block={block} key={block.fields.title} />)
+      }
+      if (block.sys.contentType.sys.id == 'storyCarouselBlock') {
+        block_component.push(<StoryCarouselBlock block={block} key={block.fields.title} />)
       }
     })
     // console.log(block_component)
