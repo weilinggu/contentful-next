@@ -1,5 +1,5 @@
-import ProductBlock from './ProductBlock'
-import InstructionBlock from './InstructionBlock'
+import ProductBlock from '../Block/ProductBlock'
+import InstructionBlock from '../Block/InstructionBlock'
 
 function ProductPage(props) {
     console.log(props.product.fields.instructionBlock)

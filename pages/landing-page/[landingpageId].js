@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { contentfulClient } from '../../lib/contentful-client'
 import React from 'react'
-import LandingPage from '../../Components/LandingPage'
+import LandingPage from '../../Components/Page/LandingPage'
 
 function LandingPagePage(props) {
     // console.log(props.page)

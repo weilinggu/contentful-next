@@ -1,6 +1,6 @@
 
 // import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import ProductData from './ProductData'
+import ProductData from '../Data/ProductData'
 
 function ProductBlock(props) {
     // Access post fields map

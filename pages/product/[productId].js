@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { contentfulClient } from '../../lib/contentful-client'
 import React from 'react'
-import ProductPage from '../../Components/ProductPage'
+import ProductPage from '../../Components/Page/ProductPage'
 
 function Product(props) {
     // console.log(props.product)
