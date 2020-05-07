@@ -8,7 +8,7 @@ function Product(props) {
     return (
         <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>{props.product.fields.pageTitle}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

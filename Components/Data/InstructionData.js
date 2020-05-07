@@ -6,7 +6,7 @@ function InstructionData(props) {
   // Access post fields map
   // console.log(props)
   const block = props.block.fields;
-  console.log(block)
+  // console.log(block)
 
   return (
     <div className="column">
@@ -18,7 +18,6 @@ function InstructionData(props) {
                 block.instructions.map(instruction => (
                   <TextImageData data={instruction} key={instruction.sys.id}/>
                 )
-                  
                 )
         }
       </div>

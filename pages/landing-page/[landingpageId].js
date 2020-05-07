@@ -8,7 +8,7 @@ function LandingPagePage(props) {
     return (
         <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>{props.page.fields.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -16,7 +16,7 @@ function LandingPagePage(props) {
         <React.Fragment>
           <div className="container grid-lg mt-2">
             <div className="columns">
-                <LandingPage page={props.page} key={props.page.fields.pageTitle} />
+                <LandingPage page={props.page} key={props.page.sys.id} />
             </div>
           </div>
         </React.Fragment>
@@ -28,7 +28,7 @@ function LandingPagePage(props) {
 export async function getServerSideProps({ query }) {
     const { landingpageId } = query
     let page = {}
-    console.log(landingpageId)
+    // console.log(landingpageId)
   
     //@todo use getEntry
     const entries = await contentfulClient.getEntries({
