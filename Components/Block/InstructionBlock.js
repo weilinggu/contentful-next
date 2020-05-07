@@ -8,7 +8,7 @@ function InstructionBlock(props) {
   // console.log(product)
 
   return (
-    <div className='card'>
+    <div className='card instruction'>
       <p class='instructionTitle'>Block Title: {block.title}</p>
       <p class='instructionHeading'>Style: {block.style}</p>
       <InstructionData block={block.instructionComponent} />
