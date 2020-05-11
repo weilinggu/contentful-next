@@ -28,7 +28,7 @@ function LandingPage(props) {
   return (
     <div className='column landing'>
       <h1>{page.title}</h1>
-      <p class='pageDescription'>Page Description: {page.description}</p>
+      <p className='pageDescription'>Page Description: {page.description}</p>
       {block_component}
     </div>
   );

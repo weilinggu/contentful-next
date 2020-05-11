@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "contentful space export",
+    "login": "contentful login"
   },
   "dependencies": {
     "contentful": "^7.14.4",

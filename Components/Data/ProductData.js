@@ -10,8 +10,10 @@ function ProductData(props) {
   return (
     <div className="column">
       <div className="card" style={{ height: "100%" }}>
+      {props.product.url && 
+        <a href={props.product.url}><div className="card-title h5">{product.productName}</div></a>}
         <div className="card-image">
-          {product.image &&
+          {product.image && !props.teaser &&
                 product.image.map(image => (
                   <img key={image.fields.file.url} src={image.fields.file.url} className="img-responsive img-fit-cover" style={{ height: 265 }} />
                 ))}

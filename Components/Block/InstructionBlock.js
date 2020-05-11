@@ -9,8 +9,8 @@ function InstructionBlock(props) {
 
   return (
     <div className='card instruction'>
-      <p class='instructionTitle'>Block Title: {block.title}</p>
-      <p class='instructionHeading'>Style: {block.style}</p>
+      <p className='instructionTitle'>Block Title: {block.title}</p>
+      <p className='instructionHeading'>Style: {block.style}</p>
       <InstructionData block={block.instructionComponent} />
     </div>
   );
