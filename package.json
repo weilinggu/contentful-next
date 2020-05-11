@@ -10,6 +10,7 @@
     "login": "contentful login"
   },
   "dependencies": {
+    "braintree": "^2.22.0",
     "contentful": "^7.14.4",
     "next": "9.3.6",
     "react": "16.13.1",
