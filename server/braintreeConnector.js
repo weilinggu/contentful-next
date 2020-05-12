@@ -13,11 +13,11 @@ const getClientToken = async () => {
   return response.clientToken
 }
 
-const checkout = async (nonceFromClient) => {
-  await gateway.transaction.sale({
-    amount: "10.00",
-    paymentMethodNonce: nonceFromClient,
-    deviceData: deviceDataFromClient,
+const checkout = async (nonce, deviceData, amount) => {
+  return await gateway.transaction.sale({
+    amount,
+    paymentMethodNonce: nonce,
+    deviceData: deviceData,
     options: {
       submitForSettlement: true,
     },

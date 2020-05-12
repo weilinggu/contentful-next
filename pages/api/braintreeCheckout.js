@@ -1,7 +1,10 @@
 import braintree from '../../server/braintreeConnector'
 
 export default async (req, res) => {
-  const nonceFromClient = req.body.payment_method_nonce
+  const nonce = req.body.braintreePayload.nonce
+  const deviceData = req.body.braintreePayload.deviceData
+  const amount = req.body.amount
 
-  await braintree.checkout(nonceFromClient)
+  const response = await braintree.checkout(nonce, deviceData, amount)
+  res.json(response)
 }
