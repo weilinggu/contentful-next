@@ -1,10 +1,16 @@
-const braintree = require('braintree')
+import braintree from 'braintree'
+import {
+  BRAINTREE_ENVIRONMENT,
+  BRAINTREE_MERCHANT_ID,
+  BRAINTREE_PUBLIC_KEY,
+  BRAINTREE_PRIVATE_KEY
+} from '../config.json'
 
 const gateway = braintree.connect({
-  environment: braintree.Environment.Sandbox,
-  merchantId: 'nqzdbfsqgkgm6jvn',
-  publicKey: 'vm7rw5dm6wwxssjm',
-  privateKey: '89912c7cf8de9d039a0500ad94a648d3'
+  environment: BRAINTREE_ENVIRONMENT == 'PRODUCTION' ? braintree.Environment.Production : braintree.Environment.Sandbox,
+  merchantId: BRAINTREE_MERCHANT_ID,
+  publicKey: BRAINTREE_PUBLIC_KEY,
+  privateKey: BRAINTREE_PRIVATE_KEY,
 })
 
 const getClientToken = async () => {
