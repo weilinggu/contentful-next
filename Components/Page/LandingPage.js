@@ -6,23 +6,26 @@ function LandingPage(props) {
   // console.log(props.page.fields)
   const page = props.page.fields;
   let block_component = [];
-  page.blocks.forEach(block => {
-    if (block.sys.contentType.sys.id == 'productBlock') {
-      block_component.push(
-        <ProductBlock product={block} key={block.fields.blockTitle} />
-      );
-    }
-    if (block.sys.contentType.sys.id == 'instructionBlock') {
-      block_component.push(
-        <InstructionBlock block={block} key={block.fields.title} />
-      );
-    }
-    if (block.sys.contentType.sys.id == 'storyCarouselBlock') {
-      block_component.push(
-        <StoryCarouselBlock block={block} key={block.fields.title} />
-      );
-    }
-  });
+  if (page.blocks) {
+    page.blocks.forEach(block => {
+      if (block.sys.contentType.sys.id == 'productBlock') {
+        block_component.push(
+          <ProductBlock product={block} key={block.fields.blockTitle} />
+        );
+      }
+      if (block.sys.contentType.sys.id == 'instructionBlock') {
+        block_component.push(
+          <InstructionBlock block={block} key={block.fields.title} />
+        );
+      }
+      if (block.sys.contentType.sys.id == 'storyCarouselBlock') {
+        block_component.push(
+          <StoryCarouselBlock block={block} key={block.fields.title} />
+        );
+      }
+    });
+  }
+  
   // console.log(block_component)
 
   return (
