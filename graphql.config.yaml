@@ -1,0 +1,5 @@
+schemaPath: ./schema.graphql
+include: ./pages/**/*.js
+extensions:
+  endpoints:
+    default: "https://stagingm232-na.coravin.com/graphql"
