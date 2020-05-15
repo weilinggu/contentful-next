@@ -1,6 +1,7 @@
 import withApollo from '../lib/with-apollo'
 import Link from 'next/link'
 import { useViewerQuery } from '../lib/viewer.graphql'
+import { useEntryQuery } from '../lib/entry.graphql'
 
 // Original Project Imports:
 
