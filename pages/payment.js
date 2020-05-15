@@ -7,6 +7,9 @@ export default () => {
   
   let [submitEnabled, setSubmitEnabled] = useState(false)
   let [amount, setAmount] = useState('')
+
+  let [hostedFields, setHostedFields] = useState()
+
   let [paymentMade, setPaymentMade] = useState(false)
   let [paymentSuccessful, setPaymentSuccessful] = useState(false)
 
@@ -19,7 +22,7 @@ export default () => {
         authorization: clientToken,
       })
 
-      await braintree.hostedFields.create({
+      setHostedFields(await braintree.hostedFields.create({
         client,
         styles: {
           'input': {
@@ -45,32 +48,30 @@ export default () => {
             container: '#expiration-date'
           }
         }
-      })
+      }))
 
       setSubmitEnabled(true)
     }
 
     configureHostedFields()
     
-    setSubmitEnabled(true)
   }, [])
 
-  const submitPayment = () => {
-    dropInInstance.requestPaymentMethod(async (err, payload) => {
-      const response = await axios.post('/api/braintree/checkout', {
-        amount,
-        braintreePayload: payload,
-      }).catch(error => {
-        console.log(error)
-        setPaymentSuccessful(false)
-      })
+  const submitPayment = async () => {
+    const payload = await hostedFields.tokenize()
 
-      setPaymentMade(true)
-      console.log(`Response: ${JSON.stringify(response, null, 2)}`)
-      if (response && response.data && response.data.success) {
-        setPaymentSuccessful(true)
-      }
+    const response = await axios.post('/api/braintree/checkout', {
+      amount,
+      braintreePayload: payload
+    }).catch(err => {
+      console.log(err)
+      setPaymentSuccessful(false)
     })
+
+    setPaymentMade(true)
+    if (response && response.data && response.data.success) {
+      setPaymentSuccessful(true)
+    }
   }
 
   const handleAmountInputChange = (event) => {
@@ -81,7 +82,7 @@ export default () => {
     <div>
       <h1>Payment</h1>
       <p>Use this page to make test payments to Braintree</p>
-      <p>(Hint: Test Visa number: 4111111111111111; any expiration date)</p>
+      <p>(Hint: Test Visa number: 4111111111111111; any expiration date + any cvv)</p>
       <label htmlFor="amount">Amount to pay: </label>
       <input onChange={handleAmountInputChange}></input>
 
@@ -96,7 +97,7 @@ export default () => {
         <label htmlFor="expiration-date">Expiration Date</label>
         <div id="expiration-date" style={{ height: '30px', width: '250px', border: '1px solid black'}}></div>
         <br></br>
-        <input id="my-submit" type="submit" value="Pay" disabled={!submitEnabled} />
+        <input id="my-submit" type="button" value="Pay" disabled={!submitEnabled} onClick={submitPayment} />
       </form>
 
       <h3 style={{display: paymentMade && paymentSuccessful ? 'block': 'none'}}>Payment was successful! Reload page to try again</h3>
