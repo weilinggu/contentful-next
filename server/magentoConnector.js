@@ -1,9 +1,8 @@
 import axios from "axios"
-
-const graphQlEndpoint = "https://stagingm232-na.coravin.com/graphql"
+import { MAGENTO_GRAPHQL_ENDPOINT } from '../config.json'
 
 export const getCurrencyCodes = async () => {
-  return await axios.post('https://stagingm232-na.coravin.com/graphql', {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     query: /* GraphQL */`
       query {
         currency {
@@ -15,7 +14,7 @@ export const getCurrencyCodes = async () => {
 }
 
 export const createCustomer = async (options) => {
-  return await axios.post('https://stagingm232-na.coravin.com/graphql', {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     variables: options,
     query: /* GraphQL */`
       mutation($firstName:String!, $lastName:String!, $email:String!, $password:String!, $isSubscribed:Boolean!) {
@@ -41,7 +40,7 @@ export const createCustomer = async (options) => {
 }
 
 export const generateCustomerToken = async (email, password) => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     query: /* GraphQL */`
       mutation {
         generateCustomerToken(email: "${email}", password: "${password}") {
@@ -53,7 +52,7 @@ export const generateCustomerToken = async (email, password) => {
 }
 
 export const createCart = async (accessToken) => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     query: /* GraphQL */`
       {
         customerCart {
@@ -69,7 +68,7 @@ export const createCart = async (accessToken) => {
 }
 
 export const createGuestCart = async () => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     query: /* GraphQL */`
       mutation {
         createEmptyCart
@@ -79,7 +78,7 @@ export const createGuestCart = async () => {
 }
 
 export const addSimpleProductToCart = async (accessToken, options) => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     variables: options,
     query: /* GraphQL */`
       mutation($cartId:String!, $sku:String!, $quantity:Float!) {
@@ -121,7 +120,7 @@ export const addVirtualProductToCart = async () => {
 }
 
 export const setShippingAddressOnCart = async (accessToken, options) => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     variables: options,
     query: /* GraphQL */`
       mutation(
@@ -188,7 +187,7 @@ export const setShippingAddressOnCart = async (accessToken, options) => {
 }
 
 export const getCustomerAddresses = async (accessToken) => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     query: /* GraphQL */`
       query {
         customer {
@@ -210,7 +209,7 @@ export const getCustomerAddresses = async (accessToken) => {
 }
 
 export const addShippingAddressFromExistingAddress = async (accessToken, config) => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     variables: config,
     query: /* GraphQL */`
       mutation($cartId: String!, $addressId: Int!) {
@@ -261,7 +260,7 @@ export const addNewShippingAndBillingAddress = async () => {
 }
 
 export const addBillingAddressFromExistingAddress = async (accessToken, config) => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     variables: config,
     query: /* GraphQL */`
       mutation($cartId: String!, $addressId: Int!) {
@@ -304,7 +303,7 @@ export const addBillingAddressFromExistingAddress = async (accessToken, config) 
 }
 
 export const addShippingMethodToCart = async (accessToken, options) => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     variables: options,
     query: /* GraphQL */ `
       mutation($cartId: String!, $carrierCode: String!, $methodCode: String!) {
@@ -338,7 +337,7 @@ export const addShippingMethodToCart = async (accessToken, options) => {
 }
 
 export const getPaymentMethodsForCart = async (accessToken, options) => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     variables: options,
     query: /* GraphQL */`
       query($cartId: String!, ) {
@@ -358,7 +357,7 @@ export const getPaymentMethodsForCart = async (accessToken, options) => {
 }
 
 export const setPaymentMethodOnCart = async (accessToken, options) => {
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     variables: options,
     query: /* GraphQL */`
       mutation($cartId: String!, $paymentMethodCode: String!, $deviceData: String!, $paymentMethodNonce: String!) {
@@ -390,7 +389,7 @@ export const setPaymentMethodOnCart = async (accessToken, options) => {
 
 export const placeOrder = async (accessToken, options) => {
   console.log(`Got access token '${accessToken}' and options ${JSON.stringify(options)}`)
-  return await axios.post(graphQlEndpoint, {
+  return await axios.post(MAGENTO_GRAPHQL_ENDPOINT, {
     variables: options,
     query: /* GraphQL */`
       mutation($cartId: String!) {

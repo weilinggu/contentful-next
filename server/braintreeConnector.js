@@ -23,7 +23,7 @@ const checkout = async (nonce, deviceData, amount) => {
   return await gateway.transaction.sale({
     amount,
     paymentMethodNonce: nonce,
-    deviceData: deviceData,
+    deviceData,
     options: {
       submitForSettlement: false,
     },
