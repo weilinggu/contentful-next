@@ -8,6 +8,10 @@ import SetShippingAddressOnCart from '../Components/Checkout/SetShippingAddressO
 import CreateGuestCart from '../Components/Checkout/CreateGuestCart'
 import SetShippingAddressFromExisting from '../Components/Checkout/SetShippingAddressFromExisting'
 import SetBillingAddressFromExisting from '../Components/Checkout/SetBillingAddressFromExisting'
+import AddShippingMethodOnCart from '../Components/Checkout/AddShippingMethodOnCart'
+import GetPaymentMethodsForCart from '../Components/Checkout/GetPaymentMethodsForCart'
+import SetPaymentMethodForCart from '../Components/Checkout/SetPaymentMethodForCart'
+import PlaceOrder from '../Components/Checkout/PlaceOrder'
 
 
 export default () => {
@@ -32,6 +36,10 @@ export default () => {
       <SetShippingAddressOnCart />
       <SetShippingAddressFromExisting />
       <SetBillingAddressFromExisting />
+      <AddShippingMethodOnCart />
+      <GetPaymentMethodsForCart />
+      <SetPaymentMethodForCart />
+      <PlaceOrder />
       <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
     </div>
   );

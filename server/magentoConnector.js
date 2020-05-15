@@ -302,3 +302,108 @@ export const addBillingAddressFromExistingAddress = async (accessToken, config) 
     }
   })
 }
+
+export const addShippingMethodToCart = async (accessToken, options) => {
+  return await axios.post(graphQlEndpoint, {
+    variables: options,
+    query: /* GraphQL */ `
+      mutation($cartId: String!, $carrierCode: String!, $methodCode: String!) {
+        setShippingMethodsOnCart(input: {
+          cart_id: $cartId
+          shipping_methods: [
+            {
+              carrier_code: $carrierCode
+              method_code: $methodCode
+            }
+          ]
+        }) {
+          cart {
+            shipping_addresses {
+              selected_shipping_method {
+                carrier_code
+                method_code
+                carrier_title
+                method_title
+              }
+            }
+          }
+        }
+      }
+    `
+  }, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    }
+  })
+}
+
+export const getPaymentMethodsForCart = async (accessToken, options) => {
+  return await axios.post(graphQlEndpoint, {
+    variables: options,
+    query: /* GraphQL */`
+      query($cartId: String!, ) {
+        cart(cart_id: $cartId) {
+          available_payment_methods {
+            code
+            title
+          }
+        }
+      }
+    `
+  }, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    }
+  })
+}
+
+export const setPaymentMethodOnCart = async (accessToken, options) => {
+  return await axios.post(graphQlEndpoint, {
+    variables: options,
+    query: /* GraphQL */`
+      mutation($cartId: String!, $paymentMethodCode: String!) {
+        setPaymentMethodOnCart(input: {
+            cart_id: $cartId
+            payment_method: {
+                code: $paymentMethodCode
+                braintree: {
+                  device_data: "fakeDeviceData"
+                  is_active_payment_token_enabler: false
+                  payment_method_nonce: "fakePaymentMethodNonce"
+                }
+            }
+        }) {
+          cart {
+            selected_payment_method {
+              code
+            }
+          }
+        }
+      }
+    `
+  }, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    }
+  })
+}
+
+export const placeOrder = async (accessToken, options) => {
+  console.log(`Got access token '${accessToken}' and options ${JSON.stringify(options)}`)
+  return await axios.post(graphQlEndpoint, {
+    variables: options,
+    query: /* GraphQL */`
+      mutation($cartId: String!) {
+        placeOrder(input: {cart_id: $cartId}) {
+          order {
+            order_number
+          }
+        }
+      }
+    `
+  }, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    }
+  })
+}
