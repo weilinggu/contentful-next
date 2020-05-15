@@ -12,7 +12,7 @@ export default () => {
 
   const addProductToCart = async () => {
     setResponse('Loading...')
-    const response = await axios.put('/api/cart', {
+    const response = await axios.put('/api/checkout/createCustomerCart', {
       accessToken,
       cartId,
       sku,

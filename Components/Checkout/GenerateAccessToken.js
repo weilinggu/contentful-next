@@ -10,7 +10,7 @@ export default () => {
 
   const generateAccessToken = async () => {
     setResponse('Loading...')
-    const response = await axios.post('/api/customerAuth', {
+    const response = await axios.post('/api/checkout/getCustomerAccessToken', {
       email,
       password,
     })

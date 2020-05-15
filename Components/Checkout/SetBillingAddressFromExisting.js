@@ -12,7 +12,7 @@ export default () => {
   const addBillingAddressToCart = async () => {
     setAddBillingAddressToCartResponse('Loading...')
 
-    const response = await axios.post('/api/billingAddress', {
+    const response = await axios.post('/api/checkout/setCartBillingAddressFromExisting', {
       fromExisting: true,
       cartId,
       addressId,

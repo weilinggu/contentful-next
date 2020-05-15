@@ -1,5 +1,5 @@
 import axios from "axios"
-import { generateCustomerToken } from "../../server/magentoConnector"
+import { generateCustomerToken } from "../../../server/magentoConnector"
 
 export default async (req, res) => {
   if (req.method == 'POST') {

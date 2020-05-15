@@ -252,6 +252,14 @@ export const addShippingAddressFromExistingAddress = async (accessToken, config)
   })
 }
 
+export const addNewBillingAddress = async () => {
+  // TODO: Implement
+}
+
+export const addNewShippingAndBillingAddress = async () => {
+  // TODO: Implement
+}
+
 export const addBillingAddressFromExistingAddress = async (accessToken, config) => {
   return await axios.post(graphQlEndpoint, {
     variables: config,

@@ -21,7 +21,7 @@ export default () => {
   const setShippingAddressOnCart = async () => {
     setResponse('Loading...')
 
-    const response = await axios.post('/api/shippingAddress', {
+    const response = await axios.post('/api/checkout/setCartShippingAddressNew', {
       cartId,
       firstName,
       lastName,

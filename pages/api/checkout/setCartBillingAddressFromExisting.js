@@ -1,4 +1,4 @@
-import { addBillingAddressFromExistingAddress } from "../../server/magentoConnector"
+import { addBillingAddressFromExistingAddress } from "../../../server/magentoConnector"
 
 export default async (req, res) => {
   if (req.method == 'POST') {

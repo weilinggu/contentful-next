@@ -13,7 +13,7 @@ export default () => {
   const getCustomerShippingAddresses = async () => {
     setShippingAddressesResponse('Loading...')
 
-    const response = await axios.get('/api/customerAddresses', {
+    const response = await axios.get('/api/checkout/setCartShippingAddressFromExisting', {
       params: {
         accessToken,
       }

@@ -15,7 +15,7 @@ export default () => {
 
   useEffect(() => {
     const configureDropin = async () => {
-      const response = await axios.get('/api/braintreeClientToken')
+      const response = await axios.get('/api/braintree/clientToken')
       const clientToken = response.data.clientToken
   
       setDropInInstance(await braintree.create({
@@ -38,7 +38,7 @@ export default () => {
 
   const submitPayment = () => {
     dropInInstance.requestPaymentMethod(async (err, payload) => {
-      const response = await axios.post('/api/braintreeCheckout', {
+      const response = await axios.post('/api/braintree/checkout', {
         amount,
         braintreePayload: payload,
       }).catch(error => {

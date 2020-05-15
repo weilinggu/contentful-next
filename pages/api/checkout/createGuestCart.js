@@ -1,4 +1,4 @@
-import { createGuestCart, addSimpleProductToCart } from "../../server/magentoConnector"
+import { createGuestCart, addSimpleProductToCart } from "../../../server/magentoConnector"
 
 export default async (req, res) => {
   if (req.method == 'POST') {

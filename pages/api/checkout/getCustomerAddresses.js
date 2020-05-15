@@ -1,4 +1,4 @@
-import { getCustomerAddresses } from "../../server/magentoConnector"
+import { getCustomerAddresses } from "../../../server/magentoConnector"
 
 export default async (req, res) => {
   if (req.method == 'GET') {

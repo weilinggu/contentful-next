@@ -9,7 +9,7 @@ export default () => {
 
   const createCart = async () => {
     setResponse('Loading...')
-    const response = await axios.post('/api/cart', {
+    const response = await axios.post('/api/checkout/createCustomerCart', {
       accessToken
     })
 

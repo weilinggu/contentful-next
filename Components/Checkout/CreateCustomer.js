@@ -13,7 +13,7 @@ export default () => {
 
   const createCustomer = async () => {
     setResponse('Loading...')
-    const response = await axios.post('/api/customers', {
+    const response = await axios.post('/api/checkout/createCustomer', {
       firstName,
       lastName,
       email,

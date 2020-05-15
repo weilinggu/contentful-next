@@ -1,4 +1,4 @@
-import braintree from '../../server/braintreeConnector'
+import braintree from '../../../server/braintreeConnector'
 
 export default async (req, res) => {
   const nonce = req.body.braintreePayload.nonce
