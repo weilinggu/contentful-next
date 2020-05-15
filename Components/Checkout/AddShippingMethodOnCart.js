@@ -38,11 +38,11 @@ export default () => {
       <br></br>
 
       <label>Carrier Code: </label>
-      <input onChange={event => setCarrierCode(event.target.value)} />
+      <input onChange={event => setCarrierCode(event.target.value)} /> (example: 'matrixrate')
       <br></br>
 
       <label>Method Code: </label>
-      <input onChange={event => setMethodCode(event.target.value)} />
+      <input onChange={event => setMethodCode(event.target.value)} /> (example: 'FEDEX_GROUND')
       <br></br><br></br>
 
       <button onClick={addShippingMethodToCart}>Set Shipping Method</button>

@@ -24,6 +24,11 @@ export default () => {
   return (
     <div style={{border: '1px solid black'}}>
       <h2>Place Order</h2>
+      <p>
+        Last step, enter the values and Place Order! The response will give you an order ID if successful, or
+        tell you if something is missing (likely from an above step)
+      </p>
+
       <label>Access Token: </label>
       <input onChange={event => setAccessToken(event.target.value)} />
       <br></br>

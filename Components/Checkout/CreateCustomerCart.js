@@ -19,6 +19,8 @@ export default () => {
   return (
     <div style={{border: '1px solid black'}}>
       <h2>Create a Customer Cart</h2>
+      <p>Create a cart to use in future steps. Calling this when there is already a cart will return the existing one</p>
+
       <label>Access Token</label>
       <input onChange={event => setAccessToken(event.target.value)} />
       <br></br><br></br>
@@ -26,7 +28,7 @@ export default () => {
       <button onClick={createCart}>Create Cart</button>
       <br></br><br></br>
       <label>Response: </label>
-      <textarea value={response} />
+      <textarea value={response} /> Copy the "customerCart" -> "id" value to use as "Cart ID" below
     </div>
   )
 }

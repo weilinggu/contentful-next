@@ -45,6 +45,8 @@ export default () => {
   return (
     <div style={{border: '1px solid black'}}>
       <h2>Set Shipping Address on Cart</h2>
+      <p>Must be a valid US shipping address</p>
+
       <label>Access Token: </label>
       <input onChange={event => setAccessToken(event.target.value)} />
       <br></br>
@@ -91,6 +93,7 @@ export default () => {
 
       <label>Save in addressbook ('true' or 'false'): </label>
       <input onChange={event => setSaveInAddressBook(event.target.value.toLowerCase() == 'true')} />
+      Recommended to be set to 'true', to set the billing address from existing below.
       <br></br>
 
       <button onClick={setShippingAddressOnCart}>Set Shipping Address</button>

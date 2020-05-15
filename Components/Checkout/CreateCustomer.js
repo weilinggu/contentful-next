@@ -27,6 +27,11 @@ export default () => {
   return (
     <div style={{border: '1px solid black'}}>
       <h2>Create a customer</h2>
+      <p>
+        Enter values here to create a user. If you did this before, you can skip this step and use the previous 
+        email/password combo in the next step.
+      </p>
+
       <label htmlFor="firstName">First Name: </label>
       <input onChange={event => setFirstName(event.target.value)} />
       <br></br>
@@ -36,17 +41,17 @@ export default () => {
       <br></br>
 
       <label>Email: </label>
-      <input onChange={event => setEmail(event.target.value)} />
+      <input onChange={event => setEmail(event.target.value)} /> (example: 'yourname@email.com')
       <br></br>
 
       <label>Password</label>
-      <input onChange={event => setPassword(event.target.value)} />
+      <input onChange={event => setPassword(event.target.value)} /> (example: 'password')
       <br></br><br></br>
 
       <button onClick={createCustomer}>Create Customer</button>
       <br></br><br></br>
       <label>Response: </label>
-      <textarea value={response} />
+      <textarea value={response} /> Drag the bottom right corner of this to show response
     </div>
   )
 }

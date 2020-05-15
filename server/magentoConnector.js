@@ -361,15 +361,15 @@ export const setPaymentMethodOnCart = async (accessToken, options) => {
   return await axios.post(graphQlEndpoint, {
     variables: options,
     query: /* GraphQL */`
-      mutation($cartId: String!, $paymentMethodCode: String!) {
+      mutation($cartId: String!, $paymentMethodCode: String!, $deviceData: String!, $paymentMethodNonce: String!) {
         setPaymentMethodOnCart(input: {
             cart_id: $cartId
             payment_method: {
                 code: $paymentMethodCode
                 braintree: {
-                  device_data: "fakeDeviceData"
-                  is_active_payment_token_enabler: false
-                  payment_method_nonce: "fakePaymentMethodNonce"
+                  device_data: $deviceData
+                  is_active_payment_token_enabler: true
+                  payment_method_nonce: $paymentMethodNonce
                 }
             }
         }) {

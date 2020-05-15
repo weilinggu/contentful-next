@@ -1,28 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import braintree_drop_in from 'braintree-web-drop-in'
-import braintree from 'braintree-web'
+import braintreeDataCollector from 'braintree-web/data-collector'
+import braintreeClient from 'braintree-web/client'
+import braintreeHostedFields from 'braintree-web/hosted-fields'
 import axios from 'axios'
 
 export default () => {
   
   let [submitEnabled, setSubmitEnabled] = useState(false)
-  let [amount, setAmount] = useState('')
 
-  let [hostedFields, setHostedFields] = useState()
+  let [hostedFieldsInstance, setHostedFieldsInstance] = useState()
+  let [dataCollectorInstance, setDataCollectorInstance] = useState()
 
-  let [paymentMade, setPaymentMade] = useState(false)
-  let [paymentSuccessful, setPaymentSuccessful] = useState(false)
+  let [nonce, setNonce] = useState()
+  let [deviceData, setDeviceData] = useState()
 
   useEffect(() => {
     const configureHostedFields = async () => {
       const response = await axios.get('/api/braintree/clientToken')
       const clientToken = response.data.clientToken
 
-      const client = await braintree.client.create({
+      const client = await braintreeClient.create({
         authorization: clientToken,
       })
 
-      setHostedFields(await braintree.hostedFields.create({
+      setDataCollectorInstance(await braintreeDataCollector.create({
+        client,
+      }))
+
+      setHostedFieldsInstance(await braintreeHostedFields.create({
         client,
         styles: {
           'input': {
@@ -54,37 +60,21 @@ export default () => {
     }
 
     configureHostedFields()
-    
   }, [])
 
-  const submitPayment = async () => {
-    const payload = await hostedFields.tokenize()
+  const tokenizePayment = async () => {
+    const hostedFieldsPayload = await hostedFieldsInstance.tokenize()
+    setNonce(hostedFieldsPayload.nonce)
 
-    const response = await axios.post('/api/braintree/checkout', {
-      amount,
-      braintreePayload: payload
-    }).catch(err => {
-      console.log(err)
-      setPaymentSuccessful(false)
-    })
-
-    setPaymentMade(true)
-    if (response && response.data && response.data.success) {
-      setPaymentSuccessful(true)
-    }
-  }
-
-  const handleAmountInputChange = (event) => {
-    setAmount(event.target.value)
+    const deviceDataPayload = await dataCollectorInstance.getDeviceData({ raw: true })
+    setDeviceData(deviceDataPayload.correlation_id)
   }
 
   return (
     <div>
-      <h1>Payment</h1>
-      <p>Use this page to make test payments to Braintree</p>
+      <h1>Payment POC</h1>
+      <p>Use this page to make test payment requests to Braintree</p>
       <p>(Hint: Test Visa number: 4111111111111111; any expiration date + any cvv)</p>
-      <label htmlFor="amount">Amount to pay: </label>
-      <input onChange={handleAmountInputChange}></input>
 
       <form action="/" id="my-sample-form">
         <input type="hidden" name="payment_method_nonce" />
@@ -97,11 +87,20 @@ export default () => {
         <label htmlFor="expiration-date">Expiration Date</label>
         <div id="expiration-date" style={{ height: '30px', width: '250px', border: '1px solid black'}}></div>
         <br></br>
-        <input id="my-submit" type="button" value="Pay" disabled={!submitEnabled} onClick={submitPayment} />
+        <input id="my-submit" type="button" value="Pay" disabled={!submitEnabled} onClick={tokenizePayment} />
       </form>
 
-      <h3 style={{display: paymentMade && paymentSuccessful ? 'block': 'none'}}>Payment was successful! Reload page to try again</h3>
-      <h3 style={{display: paymentMade && !paymentSuccessful ? 'block': 'none'}}>Payment failed. Check console or reload the page to try again</h3>
+      <br></br><br></br>
+      <p>
+        After making the payment above, these fields will give you data to use when setting the payment
+        method in /checkout
+      </p>
+      <label>Nonce: </label>
+      <input type="text" value={nonce} />
+
+      <br></br>
+      <label>Device Data: </label>
+      <input type="text" value={deviceData} />
     </div>
   );
 }

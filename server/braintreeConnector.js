@@ -25,7 +25,7 @@ const checkout = async (nonce, deviceData, amount) => {
     paymentMethodNonce: nonce,
     deviceData: deviceData,
     options: {
-      submitForSettlement: true,
+      submitForSettlement: false,
     },
   })
 }

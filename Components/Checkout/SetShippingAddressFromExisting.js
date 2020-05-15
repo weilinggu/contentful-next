@@ -41,17 +41,22 @@ export default () => {
   return (
     <div style={{border: '1px solid black'}}>
       <h2>Set Shipping Address as Customer Address</h2>
+      <p>
+        Alternatively, you can set the shipping address by ID if one is stored on the customer account.
+      </p>
       <label>Access Token: </label>
       <input onChange={event => setAccessToken(event.target.value)} />
       <br></br>
 
       <h3>Get Customer Addresses</h3> 
-      
+      <p>
+        Use this to get a list of addresses to choose from.
+      </p>
 
-      <button onClick={getCustomerShippingAddresses}>Get Shipping Addresses</button>
+      <button onClick={getCustomerShippingAddresses}>Get Addresses</button>
       <br></br><br></br>
       <label>Response: </label>
-      <textarea value={shippingAddressesResponse} />
+      <textarea value={shippingAddressesResponse} /> Pick an address ID to use for shipping/billing addresses below
 
       <h3>Set Shipping Address On Cart</h3>
       <label>Cart ID</label>
@@ -62,7 +67,7 @@ export default () => {
       <input onChange={event => setAddressId(event.target.value)} />
       <br></br><br></br>
 
-      <button onClick={addShippingAddressToCart}>Add Shipping Address to Cart</button>
+      <button onClick={addShippingAddressToCart}>Set Shipping Address</button>
       <br></br><br></br>
       <label>Response: </label>
       <textarea value={addShippingAddressToCartResponse} />

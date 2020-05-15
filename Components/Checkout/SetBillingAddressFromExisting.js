@@ -28,11 +28,15 @@ export default () => {
   return (
     <div style={{border: '1px solid black'}}>
       <h2>Set Billing Address as Customer Address</h2>
+      <p>
+        Use the "Get Customer Addresses" section to get an Address ID to use here
+      </p>
+
+      <br></br>
       <label>Access Token: </label>
       <input onChange={event => setAccessToken(event.target.value)} />
       <br></br>
 
-      <h3>Set Billing Address On Cart</h3>
       <label>Cart ID</label>
       <input onChange={event => setCartId(event.target.value)} />
       <br></br>

@@ -21,6 +21,10 @@ export default () => {
   return (
     <div style={{border: '1px solid black'}}>
       <h2>Generate a Customer Access Token</h2>
+      <p>
+        Use the email/password combo you used above to generate an access token
+      </p>
+
       <label>Email: </label>
       <input onChange={event => setEmail(event.target.value)} />
       <br></br>
@@ -32,7 +36,7 @@ export default () => {
       <button onClick={generateAccessToken}>Generate Access Token</button>
       <br></br><br></br>
       <label>Response: </label>
-      <textarea value={response} />
+      <textarea value={response} /> Copy the "token" value and use for "Access Token" below
     </div>
   )
 }
