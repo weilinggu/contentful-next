@@ -1,7 +1,0 @@
-query Entry {
-    entry {
-        id
-        name
-        status
-    }
-}

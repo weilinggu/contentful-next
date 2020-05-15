@@ -4,13 +4,6 @@ type User {
     status: String!
 }
 
-type Entry {
-    id: ID!
-    name: String!
-    status: String!
-}
-
 type Query {
     viewer: User!,
-    entry: Entry!
 }
