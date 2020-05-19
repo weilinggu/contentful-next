@@ -6,10 +6,12 @@ import { useViewerQuery } from '../lib/viewer.graphql'
 
 import Head from "next/head";
 import React from 'react'
+import { useEntryQuery } from '../lib/entry.graphql';
 
 const Index = () => {
   const { data } = useViewerQuery()
-
+  const { entries } = useEntryQuery()
+  console.log(JSON.stringify(entries))
   if (data) {
     const { viewer } = data
     return (
