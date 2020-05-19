@@ -7,6 +7,7 @@ import { useViewerQuery } from '../lib/viewer.graphql'
 import Head from "next/head";
 import React from 'react'
 import { useEntryQuery } from '../lib/entry.graphql';
+import ProductPage from '../Components/Page/ProductPage'
 
 const Index = () => {
   const { data } = useViewerQuery()

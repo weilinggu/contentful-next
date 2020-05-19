@@ -19,13 +19,12 @@ export class ContentfulClient extends DataSource {
     });
   }
   async getEntries() {
-    const entries = await this.client.getEntry({
+    const entries = await this.client.getEntries({
       content_type: "productPage",
       include: 5
     });
-    // console.log(entries)
-    // console.log(JSON.stringify(entries))
-    return [entries]
+
+    return entries.items
   }
 }
 
