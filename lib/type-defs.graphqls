@@ -100,7 +100,7 @@ type ProductComponentFields {
 
 type ProductImage {
     sys: EntrySys,
-    productImageFields: ProductImageFields
+    fields: ProductImageFields
 }
 
 type ProductImageFields {

@@ -5,6 +5,25 @@ query Entry {
     }
     fields {
       pageTitle
+      productBlock {
+        fields {
+          productComponent {
+            fields {
+              productName
+              slug
+              image {
+                fields {
+                  title
+                  file {
+                    url
+                  }
+                }
+              }
+            }
+          }
+          style
+        }
+      }
     }
   }
 }

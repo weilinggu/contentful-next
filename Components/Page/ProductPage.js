@@ -3,7 +3,6 @@ import InstructionBlock from '../Block/InstructionBlock'
 
 function ProductPage(props) {
     const product = props.product.fields;
-    console.log(product.instructionBlock)
   
     return (
       <div className="column">
