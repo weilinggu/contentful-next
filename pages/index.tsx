@@ -10,10 +10,12 @@ import { useEntryQuery } from '../lib/entry.graphql';
 
 const Index = () => {
   const { data } = useViewerQuery()
-  const { entries } = useEntryQuery()
-  console.log(JSON.stringify(entries))
-  if (data) {
+  const entrydata = useEntryQuery()
+  //console.log(JSON.stringify(entries))
+  if (data && entrydata.data) {
     const { viewer } = data
+    const { entries } = entrydata.data
+    console.log(JSON.stringify(entrydata.data))
     return (
 
       <div className="container">

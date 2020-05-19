@@ -1,12 +1,13 @@
-import { createClient } from 'contentful'
+import { createClient, ContentfulClientApi } from 'contentful'
 import { SPACE, DELIVERY_TOKEN, PREVIEW_TOKEN } from '../../config.json'
 import { getOperationRootType } from 'graphql';
 
-const { RESTDataSource } = require('apollo-datasource-rest');
+import { DataSource } from 'apollo-datasource'
 
 const isProduction = false
 
-class ContentfulClient extends RESTDataSource {
+export class ContentfulClient extends DataSource {
+  client = null
   constructor() {
     super()
     this.client = createClient({
@@ -18,11 +19,13 @@ class ContentfulClient extends RESTDataSource {
     });
   }
   async getEntries() {
-    const entries = this.client.getEntry({
+    const entries = await this.client.getEntry({
       content_type: "productPage",
       include: 5
     });
-
-    return entries.items
+    // console.log(entries)
+    // console.log(JSON.stringify(entries))
+    return [entries]
   }
 }
+

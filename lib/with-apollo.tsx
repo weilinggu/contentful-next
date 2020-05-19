@@ -6,6 +6,11 @@ import Head from 'next/head'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory'
+import {ContentfulClient} from './datasources/contentfulclient'
+
+type DataSources = {
+  contentfulClient: ContentfulClient
+}
 
 type TApolloClient = ApolloClient<NormalizedCacheObject>
 
@@ -18,12 +23,12 @@ type WithApolloPageContext = {
   apolloClient: TApolloClient
 } & NextPageContext
 
-export type ResolverContext = { req: IncomingMessage; res: ServerResponse }
+export type ResolverContext = { req: IncomingMessage; res: ServerResponse, dataSources: DataSources }
 
 let globalApolloClient: TApolloClient
 
 export const createResolverContext: ContextFunction<
-  { req: IncomingMessage; res: ServerResponse },
+  { req: IncomingMessage; res: ServerResponse, dataSources: DataSources },
   ResolverContext
 > = async ({ req, res }) => {
   // If you want to pass additional data to resolvers as context
@@ -32,7 +37,10 @@ export const createResolverContext: ContextFunction<
   //    const user = await resolveUser(req.header.cookie)
   //    return { req, res, user }
   //
-  return { req, res }
+
+  const dataSources = await ({ contentfulClient: new ContentfulClient()})
+
+  return { req, res, dataSources }
 }
 
 /**
