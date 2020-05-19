@@ -1,0 +1,10 @@
+query Entry {
+  entries {
+    sys {
+      id
+    }
+    fields {
+      pageTitle
+    }
+  }
+}
