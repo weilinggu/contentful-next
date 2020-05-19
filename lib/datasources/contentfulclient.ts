@@ -6,6 +6,8 @@ import { DataSource } from 'apollo-datasource'
 
 const isProduction = false
 
+const isStaging = process.env.staging ? process.env.staging : false
+
 export class ContentfulClient extends DataSource {
   client = null
   constructor() {
@@ -13,9 +15,9 @@ export class ContentfulClient extends DataSource {
     this.client = createClient({
       host: isProduction ? "cdn.contentful.com" : "preview.contentful.com",
       // host: "cdn.contentful.com",
-      accessToken: isProduction ? DELIVERY_TOKEN : PREVIEW_TOKEN,
+      accessToken: isStaging ? process.env.DELIVERY_TOKEN : PREVIEW_TOKEN,
       // accessToken: DELIVERY_TOKEN,
-      space: SPACE,
+      space: isStaging ? process.env.SPACE : SPACE,
     });
   }
   async getEntries() {
