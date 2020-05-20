@@ -11,11 +11,11 @@ import ProductPage from '../Components/Page/ProductPage'
 
 const Index = () => {
   const { data } = useViewerQuery()
-  const entrydata = useEntryQuery()
+  const entrydata: any = useEntryQuery()
   if (data && entrydata.data) {
     const { viewer } = data
     let entries = [...entrydata.data.entries]
-    let productsComponents = []
+    let productsComponents: any = []
     entries.forEach(product => {
      // product.fields.productBlock.fields.style = 'card'
     // console.log("this is a product" + JSON.stringify(product))

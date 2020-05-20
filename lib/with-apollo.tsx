@@ -39,7 +39,7 @@ export const createResolverContext: ContextFunction<
   //
 
   const dataSources = await ({ contentfulClient: new ContentfulClient()})
-
+  // Add the ContentfulClient as the first dataSource to be available through the Resolver Context upon creation
   return { req, res, dataSources }
 }
 
