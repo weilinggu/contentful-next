@@ -28,7 +28,7 @@ export type ResolverContext = { req: IncomingMessage; res: ServerResponse, dataS
 let globalApolloClient: TApolloClient
 
 export const createResolverContext: ContextFunction<
-  { req: IncomingMessage; res: ServerResponse, dataSources: DataSources },
+  { req: IncomingMessage; res: ServerResponse},
   ResolverContext
 > = async ({ req, res }) => {
   // If you want to pass additional data to resolvers as context
