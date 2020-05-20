@@ -1,4 +1,4 @@
-# TypeScript and GraphQL Example
+#Contentful + Next + TypeScript + GraphQL Example
 ![Live Demo on Vercel](https://apollo-vercel.now.sh/)
 
 One of the strengths of GraphQL is [enforcing data types on runtime](https://graphql.github.io/graphql-spec/June2018/#sec-Value-Completion). Further, TypeScript and [GraphQL Code Generator](https://graphql-code-generator.com/) (graphql-codegen) make it safer by typing data statically, so you can write truly type-protected code with rich IDE assists.
@@ -14,14 +14,10 @@ const  News: React.FC = () => {
 	if (news) <div>{news.map(...)}</div>
 }
 ```
-
-
-
-
 ## Notes
 
 By default `**/*.graphqls` is recognized as GraphQL schema and `**/*.graphql` as GraphQL documents. If you prefer the other extensions, make sure the settings of the webpack loader in `next.config.js` and `.graphql-let.yml` are consistent.
 
 Note: Do not be alarmed that you see two renders being executed. Apollo recursively traverses the React render tree looking for Apollo query components. When it has done that, it fetches all these queries and then passes the result to a cache. This cache is then used to render the data on the server side (another React render).
 https://www.apollographql.com/docs/react/api/react-ssr/#getdatafromtree
-# typescript-graphl
+
